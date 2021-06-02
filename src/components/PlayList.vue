@@ -14,14 +14,20 @@
         v-for="(item, index) in playList"
         :key="index"
         class="column"
+        @mouseover="mouseOver"
+        @mouseleave="mouseleave"
+        @click="setVideoData(item)"
       >
         <div class="tooltip-movie card">
           <img
             class="card-img"
             :src="item.image"
-            @click="setVideoData(item)"
           >
-          <span class="tooltiptext"> {{ item.description }}</span>
+          <span
+            v-show="showToolTip"
+            class="tooltiptext"
+          >
+            {{ item.description }}</span>
         </div>
       </div>
     </div>
@@ -40,6 +46,7 @@ export default {
     return {
       playList: [],
       videoData: "",
+      showToolTip: false,
     };
   },
   created() {
@@ -61,6 +68,12 @@ export default {
       if (videoToPlay.video) {
         this.videoData = videoToPlay.video;
       }
+    },
+    mouseOver() {
+      this.showToolTip = true;
+    },
+    mouseleave() {
+      this.showToolTip = false;
     },
   },
 };
@@ -99,14 +112,16 @@ export default {
 }
 .tooltip-movie .tooltiptext {
   visibility: hidden;
-  width: 100%;
-  background-color: grey;
-  color: #fff;
-  border-radius: 6px;
+  width: 200px !important;  
+  height: initial; 
+  left: 2em;  
+  background-color: wheat;
+  color: #000;  
   position: absolute;
-  z-index: 1;
-  text-align: start;
-  border-radius: 6px;
+  z-index: 1;  
+  text-align: center;
+  cursor: pointer;
+  
 }
 
 .tooltip-movie:hover .tooltiptext {
