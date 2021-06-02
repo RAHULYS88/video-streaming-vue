@@ -112,16 +112,15 @@ export default {
 }
 .tooltip-movie .tooltiptext {
   visibility: hidden;
-  width: 200px !important;  
-  height: initial; 
-  left: 2em;  
+  width: 200px !important;
+  height: initial;
+  left: 2em;
   background-color: wheat;
-  color: #000;  
+  color: #000;
   position: absolute;
-  z-index: 1;  
+  z-index: 1;
   text-align: center;
   cursor: pointer;
-  
 }
 
 .tooltip-movie:hover .tooltiptext {
